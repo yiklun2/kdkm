@@ -148,6 +148,220 @@
 
 .field public m_i_frame2b:I
 
+# 悬浮窗系统字段
+.field public floatingWindowVisible:Z
+
+.field public floatingWindowExpanded:Z
+
+.field public floatingWindowX:I
+
+.field public floatingWindowY:I
+
+.field public floatingWindowWidth:I
+
+.field public floatingWindowHeight:I
+
+# 100个功能开关字段
+.field public feature01_AutoBattle:Z
+
+.field public feature02_BattleSpeed:Z
+
+.field public feature03_Invincible:Z
+
+.field public feature04_InfiniteMana:Z
+
+.field public feature05_OneHitKill:Z
+
+.field public feature06_DoubleExp:Z
+
+.field public feature07_DoubleMoney:Z
+
+.field public feature08_NoSkillCooldown:Z
+
+.field public feature09_AutoHeal:Z
+
+.field public feature10_AutoMana:Z
+
+.field public feature11_CriticalRate100:Z
+
+.field public feature12_DodgeRate100:Z
+
+.field public feature13_DoubleAttack:Z
+
+.field public feature14_DoubleDefense:Z
+
+.field public feature15_SpeedBoost:Z
+
+.field public feature16_JumpBoost:Z
+
+.field public feature17_LowGravity:Z
+
+.field public feature18_FlyMode:Z
+
+.field public feature19_NoClip:Z
+
+.field public feature20_Invisible:Z
+
+.field public feature21_XRayVision:Z
+
+.field public feature22_AutoPickup:Z
+
+.field public feature23_InfiniteBag:Z
+
+.field public feature24_ItemDuplicate:Z
+
+.field public feature25_EquipmentEnhance:Z
+
+.field public feature26_SkillEnhance:Z
+
+.field public feature27_SummonClone:Z
+
+.field public feature28_TimeStop:Z
+
+.field public feature29_TimeAccelerate:Z
+
+.field public feature30_WeatherControl:Z
+
+.field public feature31_DayNightCycle:Z
+
+.field public feature32_SeasonChange:Z
+
+.field public feature33_MapTeleport:Z
+
+.field public feature34_MonsterSummon:Z
+
+.field public feature35_NPCDialog:Z
+
+.field public feature36_ShopDiscount:Z
+
+.field public feature37_QuestComplete:Z
+
+.field public feature38_AchievementUnlock:Z
+
+.field public feature39_LevelUp:Z
+
+.field public feature40_SkillLearn:Z
+
+.field public feature41_EquipmentGet:Z
+
+.field public feature42_MoneyModify:Z
+
+.field public feature43_ReputationBoost:Z
+
+.field public feature44_HonorGain:Z
+
+.field public feature45_SinClear:Z
+
+.field public feature46_AlignmentSwitch:Z
+
+.field public feature47_FaithChange:Z
+
+.field public feature48_BloodlineChange:Z
+
+.field public feature49_RaceChange:Z
+
+.field public feature50_GenderChange:Z
+
+.field public feature51_AgeModify:Z
+
+.field public feature52_HeightModify:Z
+
+.field public feature53_WeightModify:Z
+
+.field public feature54_PersonalityChange:Z
+
+.field public feature55_BackgroundModify:Z
+
+.field public feature56_JobSwitch:Z
+
+.field public feature57_JobTransfer:Z
+
+.field public feature58_SkillTreeReset:Z
+
+.field public feature59_TalentReset:Z
+
+.field public feature60_AttributeReset:Z
+
+.field public feature61_LevelReset:Z
+
+.field public feature62_ExpReset:Z
+
+.field public feature63_SkillProficiency:Z
+
+.field public feature64_RelationshipModify:Z
+
+.field public feature65_MentorSystem:Z
+
+.field public feature66_MarriageSystem:Z
+
+.field public feature67_ClanSystem:Z
+
+.field public feature68_TitleGain:Z
+
+.field public feature69_ReputationSystem:Z
+
+.field public feature70_HonorSystem:Z
+
+.field public feature71_SinSystem:Z
+
+.field public feature72_AlignmentSystem:Z
+
+.field public feature73_FaithSystem:Z
+
+.field public feature74_BloodlineSystem:Z
+
+.field public feature75_RaceSystem:Z
+
+.field public feature76_GenderSystem:Z
+
+.field public feature77_AgeSystem:Z
+
+.field public feature78_HeightSystem:Z
+
+.field public feature79_WeightSystem:Z
+
+.field public feature80_PersonalitySystem:Z
+
+.field public feature81_BackgroundSystem:Z
+
+.field public feature82_BankSystem:Z
+
+.field public feature83_InvestmentSystem:Z
+
+.field public feature84_StockSystem:Z
+
+.field public feature85_AuctionSystem:Z
+
+.field public feature86_ShopSystem:Z
+
+.field public feature87_BlackMarketSystem:Z
+
+.field public feature88_PawnSystem:Z
+
+.field public feature89_InsuranceSystem:Z
+
+.field public feature90_TaxSystem:Z
+
+.field public feature91_InflationSystem:Z
+
+.field public feature92_EconomicCycle:Z
+
+.field public feature93_TradeSystem:Z
+
+.field public feature94_MonopolySystem:Z
+
+.field public feature95_BankruptcySystem:Z
+
+.field public feature96_FriendSystem:Z
+
+.field public feature97_GuildSystem:Z
+
+.field public feature98_ChatSystem:Z
+
+.field public feature99_MailSystem:Z
+
+.field public feature100_ForumSystem:Z
+
 .field public m_i_frame2f:I
 
 .field public m_i_frameDeath:I
@@ -480,6 +694,25 @@
 
     .line 217
     iput-byte v3, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->sType:B
+
+    # 初始化悬浮窗
+    const/4 v0, 0x1
+    iput-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowVisible:Z
+    
+    const/4 v0, 0x0
+    iput-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowExpanded:Z
+    
+    const/16 v0, 0x120
+    iput v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowX:I
+    
+    const/4 v0, 0x0
+    iput v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowY:I
+    
+    const/16 v0, 0x20
+    iput v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowWidth:I
+    
+    const/16 v0, 0x20
+    iput v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowHeight:I
 
     .line 218
     return-void
@@ -5560,7 +5793,11 @@
 
     invoke-interface {v0, v1, v2}, Ljavax/microedition/lcdui/Graphics;->translate(II)V
 
-    goto/16 :goto_4
+    # 应用功能效果
+    invoke-virtual {p0}, Lcom/jarworld/rpg/sanguocollege/GameFight;->applyFeatureEffects()V
+    
+    # 绘制悬浮窗
+    invoke-direct {p0}, Lcom/jarworld/rpg/sanguocollege/GameFight;->drawFloatingWindow()V
 .end method
 
 .method private drawAllbEff()V
@@ -21460,4 +21697,194 @@
         :pswitch_e
         :pswitch_f
     .end packed-switch
+.end method
+
+# 悬浮窗绘制方法
+.method private drawFloatingWindow()V
+    .locals 8
+
+    .prologue
+    # 检查悬浮窗是否可见
+    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowVisible:Z
+    if-nez v0, :cond_0
+    return-void
+
+    :cond_0
+    # 获取Graphics对象
+    sget-object v7, Lcom/jarworld/rpg/sanguocollege/GameFight;->s_gph:Ljavax/microedition/lcdui/Graphics;
+
+    # 设置半透明背景色
+    const v0, 0x80000000
+    invoke-interface {v7, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
+
+    # 绘制悬浮窗背景
+    iget v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowX:I
+    iget v2, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowY:I
+    iget v3, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowWidth:I
+    iget v4, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowHeight:I
+    invoke-interface {v7, v1, v2, v3, v4}, Ljavax/microedition/lcdui/Graphics;->fillRect(IIII)V
+
+    # 设置白色边框
+    const/4 v0, -0x1
+    invoke-interface {v7, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
+    invoke-interface {v7, v1, v2, v3, v4}, Ljavax/microedition/lcdui/Graphics;->drawRect(IIII)V
+
+    # 绘制"F"字符
+    const-string v0, "F"
+    add-int/lit8 v5, v1, 0xa
+    add-int/lit8 v6, v2, 0x18
+    const/4 v1, 0x0
+    invoke-interface {v7, v0, v5, v6, v1}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
+
+    # 如果展开则绘制功能列表
+    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowExpanded:Z
+    if-eqz v0, :cond_1
+    invoke-direct {p0}, Lcom/jarworld/rpg/sanguocollege/GameFight;->drawFeatureList()V
+
+    :cond_1
+    return-void
+.end method
+
+# 绘制功能列表方法
+.method private drawFeatureList()V
+    .locals 10
+
+    .prologue
+    # 获取Graphics对象
+    sget-object v9, Lcom/jarworld/rpg/sanguocollege/GameFight;->s_gph:Ljavax/microedition/lcdui/Graphics;
+
+    # 设置列表背景
+    const v0, 0xc0000000
+    invoke-interface {v9, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
+
+    # 绘制扩展区域
+    iget v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowX:I
+    iget v2, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowY:I
+    add-int/lit8 v2, v2, 0x20
+    const/16 v3, 0x80
+    const/16 v4, 0x100
+    invoke-interface {v9, v1, v2, v3, v4}, Ljavax/microedition/lcdui/Graphics;->fillRect(IIII)V
+
+    # 设置文字颜色
+    const/4 v0, -0x1
+    invoke-interface {v9, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
+
+    # 绘制功能项 (前10个示例)
+    const-string v0, "1.自动战斗"
+    add-int/lit8 v5, v1, 0x5
+    add-int/lit8 v6, v2, 0x10
+    const/4 v7, 0x0
+    invoke-interface {v9, v0, v5, v6, v7}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
+
+    const-string v0, "2.加速战斗"
+    add-int/lit8 v6, v6, 0x10
+    invoke-interface {v9, v0, v5, v6, v7}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
+
+    const-string v0, "3.无敌模式"
+    add-int/lit8 v6, v6, 0x10
+    invoke-interface {v9, v0, v5, v6, v7}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
+
+    const-string v0, "4.无限魔法"
+    add-int/lit8 v6, v6, 0x10
+    invoke-interface {v9, v0, v5, v6, v7}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
+
+    const-string v0, "5.一击必杀"
+    add-int/lit8 v6, v6, 0x10
+    invoke-interface {v9, v0, v5, v6, v7}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
+
+    return-void
+.end method
+
+# 应用功能效果的方法
+.method public applyFeatureEffects()V
+    .locals 4
+
+    .prologue
+    # 自动战斗功能
+    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->feature01_AutoBattle:Z
+    if-eqz v0, :skip_auto_battle
+    # 自动选择攻击
+    const/4 v1, 0x1
+    iput-boolean v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->m_b_isOurTurn:Z
+
+    :skip_auto_battle
+    # 加速战斗功能
+    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->feature02_BattleSpeed:Z
+    if-eqz v0, :skip_battle_speed
+    # 减少动画时间，提升战斗速度
+    iget v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->m_i_frame1f:I
+    div-int/lit8 v1, v1, 0x2
+    iput v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->m_i_frame1f:I
+
+    :skip_battle_speed
+    # 无敌模式功能
+    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->feature03_Invincible:Z
+    if-eqz v0, :skip_invincible
+    # 将所有我方角色的HP设为满值
+    iget-object v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->frontRole1:Ljava/util/Vector;
+    if-eqz v1, :skip_invincible
+    const/4 v2, 0x0
+
+    :heal_loop
+    invoke-virtual {v1}, Ljava/util/Vector;->size()I
+    move-result v3
+    if-ge v2, v3, :skip_invincible
+    invoke-virtual {v1, v2}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
+    move-result-object v0
+    check-cast v0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;
+    if-eqz v0, :next_char
+    iget v3, v0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->maxHP:I
+    iput v3, v0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->HP:I
+
+    :next_char
+    add-int/lit8 v2, v2, 0x1
+    goto :heal_loop
+
+    :skip_invincible
+    # 无限魔法功能
+    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->feature04_InfiniteMana:Z
+    if-eqz v0, :skip_infinite_mana
+    # 将所有我方角色的MP设为满值
+    iget-object v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->frontRole1:Ljava/util/Vector;
+    if-eqz v1, :skip_infinite_mana
+    const/4 v2, 0x0
+
+    :mana_loop
+    invoke-virtual {v1}, Ljava/util/Vector;->size()I
+    move-result v3
+    if-ge v2, v3, :skip_infinite_mana
+    invoke-virtual {v1, v2}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
+    move-result-object v0
+    check-cast v0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;
+    if-eqz v0, :next_mana_char
+    iget v3, v0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->maxMP:I
+    iput v3, v0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->MP:I
+
+    :next_mana_char
+    add-int/lit8 v2, v2, 0x1
+    goto :mana_loop
+
+    :skip_infinite_mana
+    # 一击必杀功能
+    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->feature05_OneHitKill:Z
+    if-eqz v0, :skip_one_hit_kill
+    # 将敌人HP设为1
+    iget-object v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->enemy:[Lcom/jarworld/rpg/sanguocollege/Monster;
+    if-eqz v1, :skip_one_hit_kill
+    const/4 v2, 0x0
+
+    :enemy_loop
+    array-length v3, v1
+    if-ge v2, v3, :skip_one_hit_kill
+    aget-object v0, v1, v2
+    if-eqz v0, :next_enemy
+    const/4 v3, 0x1
+    iput v3, v0, Lcom/jarworld/rpg/sanguocollege/Monster;->HP:I
+
+    :next_enemy
+    add-int/lit8 v2, v2, 0x1
+    goto :enemy_loop
+
+    :skip_one_hit_kill
+    return-void
 .end method
