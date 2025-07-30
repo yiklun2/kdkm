@@ -150,6 +150,12 @@
 
 .field static s_img_fight:[Ljavax/microedition/lcdui/Image;
 
+.field static final OPTIMIZATION_MODE:I = 0x1
+
+.field static final PERFORMANCE_BOOST:Z = 0x1
+
+.field static final MEMORY_SAVING:Z = 0x1
+
 .field static s_img_load:[Ljavax/microedition/lcdui/Image;
 
 .field static s_img_logo:[Ljavax/microedition/lcdui/Image;

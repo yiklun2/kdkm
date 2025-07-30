@@ -84,6 +84,12 @@
 
 .field static final F30:I = 0x7
 
+.field static final OPTIMIZATION_ENABLED:Z = 0x1
+
+.field static final PERFORMANCE_MODE:I = 0x1
+
+.field static final MEMORY_OPTIMIZATION:Z = 0x1
+
 .field static final FIGHTFETTLE:S = 0x12cs
 
 .field static FIGHTSHOP:B = 0x0t

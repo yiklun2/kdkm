@@ -4433,7 +4433,7 @@
     .locals 13
 
     .prologue
-    const-wide/16 v11, 0x28
+    const-wide/16 v11, 0x10
 
     .line 934
     invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
@@ -4495,7 +4495,7 @@
     .restart local v1    # "startTime":J
     .restart local v3    # "timeTaken":J
     :cond_2
-    const-wide/16 v6, 0xa
+    const-wide/16 v6, 0x5
     invoke-static {v6, v7}, Ljava/lang/Thread;->sleep(J)V
     :try_end_0
     .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0

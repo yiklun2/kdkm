@@ -162,6 +162,12 @@
 
 .field public uiFIdx:I
 
+.field public optimizationLevel:I
+
+.field public performanceMode:Z
+
+.field public cachedStats:Ljava/util/Map;
+
 
 # direct methods
 .method public constructor <init>()V
@@ -179,6 +185,19 @@
 
     .line 101
     iput-boolean v4, p0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->m_b_isCanPlay:Z
+
+    .line 102
+    const/4 v0, 0x1
+    iput v0, p0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->optimizationLevel:I
+
+    .line 103
+    const/4 v0, 0x1
+    iput-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->performanceMode:Z
+
+    .line 104
+    new-instance v0, Ljava/util/HashMap;
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+    iput-object v0, p0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->cachedStats:Ljava/util/Map;
 
     .line 103
     iput-boolean v4, p0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->m_b_isAlive:Z
