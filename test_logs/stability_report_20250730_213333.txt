@@ -1,0 +1,127 @@
+🎮 游戏稳定性测试报告
+====================
+
+测试时间: Wed Jul 30 09:33:33 PM UTC 2025
+总测试次数: 5
+成功次数: 5
+失败次数: 0
+成功率: %
+
+详细结果:
+--- apk_check_test_game_v1.apk.log ---
+    testing: system/images/rain_2.png   OK
+    testing: system/images/rain_3.png   OK
+    testing: system/images/sakura_0.png   OK
+    testing: system/images/sakura_1.png   OK
+    testing: system/images/snow_0.png   OK
+    testing: system/images/snow_1.png   OK
+    testing: system/images/snow_2.png   OK
+    testing: system/images/snow_3.png   OK
+    testing: system/images/snow_4.png   OK
+No errors detected in compressed data of test_game_v1.apk.
+
+--- apk_check_test_game_v2.apk.log ---
+    testing: system/images/rain_2.png   OK
+    testing: system/images/rain_3.png   OK
+    testing: system/images/sakura_0.png   OK
+    testing: system/images/sakura_1.png   OK
+    testing: system/images/snow_0.png   OK
+    testing: system/images/snow_1.png   OK
+    testing: system/images/snow_2.png   OK
+    testing: system/images/snow_3.png   OK
+    testing: system/images/snow_4.png   OK
+No errors detected in compressed data of test_game_v2.apk.
+
+--- apk_check_test_game_v3.apk.log ---
+    testing: system/images/rain_2.png   OK
+    testing: system/images/rain_3.png   OK
+    testing: system/images/sakura_0.png   OK
+    testing: system/images/sakura_1.png   OK
+    testing: system/images/snow_0.png   OK
+    testing: system/images/snow_1.png   OK
+    testing: system/images/snow_2.png   OK
+    testing: system/images/snow_3.png   OK
+    testing: system/images/snow_4.png   OK
+No errors detected in compressed data of test_game_v3.apk.
+
+--- apk_check_test_game_v4.apk.log ---
+    testing: system/images/rain_2.png   OK
+    testing: system/images/rain_3.png   OK
+    testing: system/images/sakura_0.png   OK
+    testing: system/images/sakura_1.png   OK
+    testing: system/images/snow_0.png   OK
+    testing: system/images/snow_1.png   OK
+    testing: system/images/snow_2.png   OK
+    testing: system/images/snow_3.png   OK
+    testing: system/images/snow_4.png   OK
+No errors detected in compressed data of test_game_v4.apk.
+
+--- apk_check_test_game_v5.apk.log ---
+    testing: system/images/rain_2.png   OK
+    testing: system/images/rain_3.png   OK
+    testing: system/images/sakura_0.png   OK
+    testing: system/images/sakura_1.png   OK
+    testing: system/images/snow_0.png   OK
+    testing: system/images/snow_1.png   OK
+    testing: system/images/snow_2.png   OK
+    testing: system/images/snow_3.png   OK
+    testing: system/images/snow_4.png   OK
+No errors detected in compressed data of test_game_v5.apk.
+
+--- compile_v1.log ---
+I: Using Apktool 2.7.0
+I: Checking whether sources has changed...
+I: Checking whether resources has changed...
+I: Building resources...
+I: Building apk file...
+I: Copying unknown files/dir...
+I: Built apk into: test_game_v1.apk
+
+--- compile_v2.log ---
+I: Using Apktool 2.7.0
+I: Checking whether sources has changed...
+I: Checking whether resources has changed...
+I: Building resources...
+I: Building apk file...
+I: Copying unknown files/dir...
+I: Built apk into: test_game_v2.apk
+
+--- compile_v3.log ---
+I: Using Apktool 2.7.0
+I: Checking whether sources has changed...
+I: Checking whether resources has changed...
+I: Building resources...
+I: Building apk file...
+I: Copying unknown files/dir...
+I: Built apk into: test_game_v3.apk
+
+--- compile_v4.log ---
+I: Using Apktool 2.7.0
+I: Checking whether sources has changed...
+I: Checking whether resources has changed...
+I: Building resources...
+I: Building apk file...
+I: Copying unknown files/dir...
+I: Built apk into: test_game_v4.apk
+
+--- compile_v5.log ---
+I: Using Apktool 2.7.0
+I: Checking whether sources has changed...
+I: Checking whether resources has changed...
+I: Building resources...
+I: Building apk file...
+I: Copying unknown files/dir...
+I: Built apk into: test_game_v5.apk
+
+--- locals_analysis.log ---
+    .locals 0
+    .locals 0
+    .locals 1
+    .locals 1
+    .locals 1
+    .locals 4
+    .locals 5
+    .locals 10
+    .locals 6
+    .locals 2
+
