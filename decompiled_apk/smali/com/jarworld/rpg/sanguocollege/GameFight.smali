@@ -151,216 +151,9 @@
 # 悬浮窗系统字段
 .field public floatingWindowVisible:Z
 
-.field public floatingWindowExpanded:Z
-
 .field public floatingWindowX:I
 
 .field public floatingWindowY:I
-
-.field public floatingWindowWidth:I
-
-.field public floatingWindowHeight:I
-
-# 100个功能开关字段
-.field public feature01_AutoBattle:Z
-
-.field public feature02_BattleSpeed:Z
-
-.field public feature03_Invincible:Z
-
-.field public feature04_InfiniteMana:Z
-
-.field public feature05_OneHitKill:Z
-
-.field public feature06_DoubleExp:Z
-
-.field public feature07_DoubleMoney:Z
-
-.field public feature08_NoSkillCooldown:Z
-
-.field public feature09_AutoHeal:Z
-
-.field public feature10_AutoMana:Z
-
-.field public feature11_CriticalRate100:Z
-
-.field public feature12_DodgeRate100:Z
-
-.field public feature13_DoubleAttack:Z
-
-.field public feature14_DoubleDefense:Z
-
-.field public feature15_SpeedBoost:Z
-
-.field public feature16_JumpBoost:Z
-
-.field public feature17_LowGravity:Z
-
-.field public feature18_FlyMode:Z
-
-.field public feature19_NoClip:Z
-
-.field public feature20_Invisible:Z
-
-.field public feature21_XRayVision:Z
-
-.field public feature22_AutoPickup:Z
-
-.field public feature23_InfiniteBag:Z
-
-.field public feature24_ItemDuplicate:Z
-
-.field public feature25_EquipmentEnhance:Z
-
-.field public feature26_SkillEnhance:Z
-
-.field public feature27_SummonClone:Z
-
-.field public feature28_TimeStop:Z
-
-.field public feature29_TimeAccelerate:Z
-
-.field public feature30_WeatherControl:Z
-
-.field public feature31_DayNightCycle:Z
-
-.field public feature32_SeasonChange:Z
-
-.field public feature33_MapTeleport:Z
-
-.field public feature34_MonsterSummon:Z
-
-.field public feature35_NPCDialog:Z
-
-.field public feature36_ShopDiscount:Z
-
-.field public feature37_QuestComplete:Z
-
-.field public feature38_AchievementUnlock:Z
-
-.field public feature39_LevelUp:Z
-
-.field public feature40_SkillLearn:Z
-
-.field public feature41_EquipmentGet:Z
-
-.field public feature42_MoneyModify:Z
-
-.field public feature43_ReputationBoost:Z
-
-.field public feature44_HonorGain:Z
-
-.field public feature45_SinClear:Z
-
-.field public feature46_AlignmentSwitch:Z
-
-.field public feature47_FaithChange:Z
-
-.field public feature48_BloodlineChange:Z
-
-.field public feature49_RaceChange:Z
-
-.field public feature50_GenderChange:Z
-
-.field public feature51_AgeModify:Z
-
-.field public feature52_HeightModify:Z
-
-.field public feature53_WeightModify:Z
-
-.field public feature54_PersonalityChange:Z
-
-.field public feature55_BackgroundModify:Z
-
-.field public feature56_JobSwitch:Z
-
-.field public feature57_JobTransfer:Z
-
-.field public feature58_SkillTreeReset:Z
-
-.field public feature59_TalentReset:Z
-
-.field public feature60_AttributeReset:Z
-
-.field public feature61_LevelReset:Z
-
-.field public feature62_ExpReset:Z
-
-.field public feature63_SkillProficiency:Z
-
-.field public feature64_RelationshipModify:Z
-
-.field public feature65_MentorSystem:Z
-
-.field public feature66_MarriageSystem:Z
-
-.field public feature67_ClanSystem:Z
-
-.field public feature68_TitleGain:Z
-
-.field public feature69_ReputationSystem:Z
-
-.field public feature70_HonorSystem:Z
-
-.field public feature71_SinSystem:Z
-
-.field public feature72_AlignmentSystem:Z
-
-.field public feature73_FaithSystem:Z
-
-.field public feature74_BloodlineSystem:Z
-
-.field public feature75_RaceSystem:Z
-
-.field public feature76_GenderSystem:Z
-
-.field public feature77_AgeSystem:Z
-
-.field public feature78_HeightSystem:Z
-
-.field public feature79_WeightSystem:Z
-
-.field public feature80_PersonalitySystem:Z
-
-.field public feature81_BackgroundSystem:Z
-
-.field public feature82_BankSystem:Z
-
-.field public feature83_InvestmentSystem:Z
-
-.field public feature84_StockSystem:Z
-
-.field public feature85_AuctionSystem:Z
-
-.field public feature86_ShopSystem:Z
-
-.field public feature87_BlackMarketSystem:Z
-
-.field public feature88_PawnSystem:Z
-
-.field public feature89_InsuranceSystem:Z
-
-.field public feature90_TaxSystem:Z
-
-.field public feature91_InflationSystem:Z
-
-.field public feature92_EconomicCycle:Z
-
-.field public feature93_TradeSystem:Z
-
-.field public feature94_MonopolySystem:Z
-
-.field public feature95_BankruptcySystem:Z
-
-.field public feature96_FriendSystem:Z
-
-.field public feature97_GuildSystem:Z
-
-.field public feature98_ChatSystem:Z
-
-.field public feature99_MailSystem:Z
-
-.field public feature100_ForumSystem:Z
 
 .field public m_i_frame2f:I
 
@@ -699,20 +492,11 @@
     const/4 v0, 0x1
     iput-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowVisible:Z
     
-    const/4 v0, 0x0
-    iput-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowExpanded:Z
-    
     const/16 v0, 0x120
     iput v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowX:I
     
     const/4 v0, 0x0
     iput v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowY:I
-    
-    const/16 v0, 0x20
-    iput v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowWidth:I
-    
-    const/16 v0, 0x20
-    iput v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowHeight:I
 
     .line 218
     return-void
@@ -21698,61 +21482,34 @@
     .end packed-switch
 .end method
 
-# 安全的悬浮窗绘制方法
+# 最简单的悬浮窗方法
 .method private drawFloatingWindowSafe()V
-    .locals 6
+    .locals 3
 
     .prologue
-    # 检查悬浮窗是否可见
+    # 检查是否显示悬浮窗
     iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowVisible:Z
-    if-nez v0, :draw_window
+    if-nez v0, :show_window
     return-void
 
-    :draw_window
-    # 获取Graphics对象并检查是否为null
-    sget-object v5, Lcom/jarworld/rpg/sanguocollege/GameFight;->s_gph:Ljavax/microedition/lcdui/Graphics;
-    if-nez v5, :graphics_ok
+    :show_window
+    # 获取Graphics对象
+    sget-object v2, Lcom/jarworld/rpg/sanguocollege/GameFight;->s_gph:Ljavax/microedition/lcdui/Graphics;
+    if-nez v2, :draw_safe
     return-void
 
-    :graphics_ok
-    # 设置黑色背景
+    :draw_safe
+    # 绘制简单方块
     const/4 v0, 0x0
-    invoke-interface {v5, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
-
-    # 绘制简单的悬浮窗背景
-    const/16 v1, 0x120
-    const/4 v2, 0x0
-    const/16 v3, 0x20
-    const/16 v4, 0x20
-    invoke-interface {v5, v1, v2, v3, v4}, Ljavax/microedition/lcdui/Graphics;->fillRect(IIII)V
-
-    # 设置白色文字
-    const/4 v0, -0x1
-    invoke-interface {v5, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
-
-    # 绘制简单的"F"字符
-    const-string v0, "F"
-    const/16 v1, 0x12a
-    const/16 v2, 0x18
-    const/4 v3, 0x0
-    invoke-interface {v5, v0, v1, v2, v3}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
+    invoke-interface {v2, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
+    
+    const/16 v0, 0x120
+    const/4 v1, 0x0
+    invoke-interface {v2, v0, v1, v0, v0}, Ljavax/microedition/lcdui/Graphics;->fillRect(IIII)V
 
     return-void
 .end method
 
 
 
-# 简化的功能效果方法
-.method public applyFeatureEffects()V
-    .locals 2
 
-    .prologue
-    # 简单的自动战斗功能
-    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->feature01_AutoBattle:Z
-    if-eqz v0, :skip_effects
-    const/4 v1, 0x1
-    iput-boolean v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->m_b_isOurTurn:Z
-
-    :skip_effects
-    return-void
-.end method
