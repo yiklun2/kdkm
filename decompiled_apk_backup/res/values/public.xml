@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="attr" name="testing" id="0x7f010000" />
+    <public type="attr" name="backgroundColor" id="0x7f010001" />
+    <public type="attr" name="textColor" id="0x7f010002" />
+    <public type="attr" name="keywords" id="0x7f010003" />
+    <public type="attr" name="refreshInterval" id="0x7f010004" />
+    <public type="attr" name="isGoneWithoutAd" id="0x7f010005" />
+    <public type="drawable" name="icon" id="0x7f020000" />
+    <public type="layout" name="alert" id="0x7f030000" />
+    <public type="layout" name="main" id="0x7f030001" />
+    <public type="string" name="hello" id="0x7f040000" />
+    <public type="string" name="app_name" id="0x7f040001" />
+    <public type="string" name="message" id="0x7f040002" />
+    <public type="string" name="OK" id="0x7f040003" />
+    <public type="string" name="Cancel" id="0x7f040004" />
+    <public type="id" name="id_recordlayout" id="0x7f050000" />
+    <public type="id" name="textField" id="0x7f050001" />
+    <public type="id" name="game_gl_surfaceview" id="0x7f050002" />
+    <public type="id" name="ADLayout" id="0x7f050003" />
+    <public type="id" name="adView" id="0x7f050004" />
+</resources>
