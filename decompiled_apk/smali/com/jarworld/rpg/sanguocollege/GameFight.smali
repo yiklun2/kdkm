@@ -5793,11 +5793,7 @@
 
     invoke-interface {v0, v1, v2}, Ljavax/microedition/lcdui/Graphics;->translate(II)V
 
-    # 应用功能效果
-    invoke-virtual {p0}, Lcom/jarworld/rpg/sanguocollege/GameFight;->applyFeatureEffects()V
-    
-    # 绘制悬浮窗
-    invoke-direct {p0}, Lcom/jarworld/rpg/sanguocollege/GameFight;->drawFloatingWindow()V
+    goto/16 :goto_4
 .end method
 
 .method private drawAllbEff()V
@@ -6754,6 +6750,9 @@
     const/4 v7, 0x0
 
     invoke-static/range {v0 .. v7}, Lcom/jarworld/rpg/sanguocollege/Tool;->drawImg(Ljavax/microedition/lcdui/Graphics;Ljavax/microedition/lcdui/Image;IIIIII)V
+
+    # 安全位置绘制悬浮窗
+    invoke-direct {p0}, Lcom/jarworld/rpg/sanguocollege/GameFight;->drawFloatingWindowSafe()V
 
     goto/16 :goto_0
 .end method
@@ -21699,192 +21698,61 @@
     .end packed-switch
 .end method
 
-# 悬浮窗绘制方法
-.method private drawFloatingWindow()V
-    .locals 8
+# 安全的悬浮窗绘制方法
+.method private drawFloatingWindowSafe()V
+    .locals 6
 
     .prologue
     # 检查悬浮窗是否可见
     iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowVisible:Z
-    if-nez v0, :cond_0
+    if-nez v0, :draw_window
     return-void
 
-    :cond_0
-    # 获取Graphics对象
-    sget-object v7, Lcom/jarworld/rpg/sanguocollege/GameFight;->s_gph:Ljavax/microedition/lcdui/Graphics;
+    :draw_window
+    # 获取Graphics对象并检查是否为null
+    sget-object v5, Lcom/jarworld/rpg/sanguocollege/GameFight;->s_gph:Ljavax/microedition/lcdui/Graphics;
+    if-nez v5, :graphics_ok
+    return-void
 
-    # 设置半透明背景色
-    const v0, 0x80000000
-    invoke-interface {v7, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
+    :graphics_ok
+    # 设置黑色背景
+    const/4 v0, 0x0
+    invoke-interface {v5, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
 
-    # 绘制悬浮窗背景
-    iget v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowX:I
-    iget v2, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowY:I
-    iget v3, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowWidth:I
-    iget v4, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowHeight:I
-    invoke-interface {v7, v1, v2, v3, v4}, Ljavax/microedition/lcdui/Graphics;->fillRect(IIII)V
+    # 绘制简单的悬浮窗背景
+    const/16 v1, 0x120
+    const/4 v2, 0x0
+    const/16 v3, 0x20
+    const/16 v4, 0x20
+    invoke-interface {v5, v1, v2, v3, v4}, Ljavax/microedition/lcdui/Graphics;->fillRect(IIII)V
 
-    # 设置白色边框
+    # 设置白色文字
     const/4 v0, -0x1
-    invoke-interface {v7, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
-    invoke-interface {v7, v1, v2, v3, v4}, Ljavax/microedition/lcdui/Graphics;->drawRect(IIII)V
+    invoke-interface {v5, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
 
-    # 绘制"F"字符
+    # 绘制简单的"F"字符
     const-string v0, "F"
-    add-int/lit8 v5, v1, 0xa
-    add-int/lit8 v6, v2, 0x18
-    const/4 v1, 0x0
-    invoke-interface {v7, v0, v5, v6, v1}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
-
-    # 如果展开则绘制功能列表
-    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowExpanded:Z
-    if-eqz v0, :cond_1
-    invoke-direct {p0}, Lcom/jarworld/rpg/sanguocollege/GameFight;->drawFeatureList()V
-
-    :cond_1
-    return-void
-.end method
-
-# 绘制功能列表方法
-.method private drawFeatureList()V
-    .locals 10
-
-    .prologue
-    # 获取Graphics对象
-    sget-object v9, Lcom/jarworld/rpg/sanguocollege/GameFight;->s_gph:Ljavax/microedition/lcdui/Graphics;
-
-    # 设置列表背景
-    const v0, 0xc0000000
-    invoke-interface {v9, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
-
-    # 绘制扩展区域
-    iget v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowX:I
-    iget v2, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->floatingWindowY:I
-    add-int/lit8 v2, v2, 0x20
-    const/16 v3, 0x80
-    const/16 v4, 0x100
-    invoke-interface {v9, v1, v2, v3, v4}, Ljavax/microedition/lcdui/Graphics;->fillRect(IIII)V
-
-    # 设置文字颜色
-    const/4 v0, -0x1
-    invoke-interface {v9, v0}, Ljavax/microedition/lcdui/Graphics;->setColor(I)V
-
-    # 绘制功能项 (前10个示例)
-    const-string v0, "1.自动战斗"
-    add-int/lit8 v5, v1, 0x5
-    add-int/lit8 v6, v2, 0x10
-    const/4 v7, 0x0
-    invoke-interface {v9, v0, v5, v6, v7}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
-
-    const-string v0, "2.加速战斗"
-    add-int/lit8 v6, v6, 0x10
-    invoke-interface {v9, v0, v5, v6, v7}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
-
-    const-string v0, "3.无敌模式"
-    add-int/lit8 v6, v6, 0x10
-    invoke-interface {v9, v0, v5, v6, v7}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
-
-    const-string v0, "4.无限魔法"
-    add-int/lit8 v6, v6, 0x10
-    invoke-interface {v9, v0, v5, v6, v7}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
-
-    const-string v0, "5.一击必杀"
-    add-int/lit8 v6, v6, 0x10
-    invoke-interface {v9, v0, v5, v6, v7}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
+    const/16 v1, 0x12a
+    const/16 v2, 0x18
+    const/4 v3, 0x0
+    invoke-interface {v5, v0, v1, v2, v3}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;III)V
 
     return-void
 .end method
 
-# 应用功能效果的方法
+
+
+# 简化的功能效果方法
 .method public applyFeatureEffects()V
-    .locals 4
+    .locals 2
 
     .prologue
-    # 自动战斗功能
+    # 简单的自动战斗功能
     iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->feature01_AutoBattle:Z
-    if-eqz v0, :skip_auto_battle
-    # 自动选择攻击
+    if-eqz v0, :skip_effects
     const/4 v1, 0x1
     iput-boolean v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->m_b_isOurTurn:Z
 
-    :skip_auto_battle
-    # 加速战斗功能
-    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->feature02_BattleSpeed:Z
-    if-eqz v0, :skip_battle_speed
-    # 减少动画时间，提升战斗速度
-    iget v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->m_i_frame1f:I
-    div-int/lit8 v1, v1, 0x2
-    iput v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->m_i_frame1f:I
-
-    :skip_battle_speed
-    # 无敌模式功能
-    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->feature03_Invincible:Z
-    if-eqz v0, :skip_invincible
-    # 将所有我方角色的HP设为满值
-    iget-object v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->frontRole1:Ljava/util/Vector;
-    if-eqz v1, :skip_invincible
-    const/4 v2, 0x0
-
-    :heal_loop
-    invoke-virtual {v1}, Ljava/util/Vector;->size()I
-    move-result v3
-    if-ge v2, v3, :skip_invincible
-    invoke-virtual {v1, v2}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
-    move-result-object v0
-    check-cast v0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;
-    if-eqz v0, :next_char
-    iget v3, v0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->maxHP:I
-    iput v3, v0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->HP:I
-
-    :next_char
-    add-int/lit8 v2, v2, 0x1
-    goto :heal_loop
-
-    :skip_invincible
-    # 无限魔法功能
-    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->feature04_InfiniteMana:Z
-    if-eqz v0, :skip_infinite_mana
-    # 将所有我方角色的MP设为满值
-    iget-object v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->frontRole1:Ljava/util/Vector;
-    if-eqz v1, :skip_infinite_mana
-    const/4 v2, 0x0
-
-    :mana_loop
-    invoke-virtual {v1}, Ljava/util/Vector;->size()I
-    move-result v3
-    if-ge v2, v3, :skip_infinite_mana
-    invoke-virtual {v1, v2}, Ljava/util/Vector;->elementAt(I)Ljava/lang/Object;
-    move-result-object v0
-    check-cast v0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;
-    if-eqz v0, :next_mana_char
-    iget v3, v0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->maxMP:I
-    iput v3, v0, Lcom/jarworld/rpg/sanguocollege/GameCharacter;->MP:I
-
-    :next_mana_char
-    add-int/lit8 v2, v2, 0x1
-    goto :mana_loop
-
-    :skip_infinite_mana
-    # 一击必杀功能
-    iget-boolean v0, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->feature05_OneHitKill:Z
-    if-eqz v0, :skip_one_hit_kill
-    # 将敌人HP设为1
-    iget-object v1, p0, Lcom/jarworld/rpg/sanguocollege/GameFight;->enemy:[Lcom/jarworld/rpg/sanguocollege/Monster;
-    if-eqz v1, :skip_one_hit_kill
-    const/4 v2, 0x0
-
-    :enemy_loop
-    array-length v3, v1
-    if-ge v2, v3, :skip_one_hit_kill
-    aget-object v0, v1, v2
-    if-eqz v0, :next_enemy
-    const/4 v3, 0x1
-    iput v3, v0, Lcom/jarworld/rpg/sanguocollege/Monster;->HP:I
-
-    :next_enemy
-    add-int/lit8 v2, v2, 0x1
-    goto :enemy_loop
-
-    :skip_one_hit_kill
+    :skip_effects
     return-void
 .end method
