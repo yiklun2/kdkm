@@ -81,6 +81,12 @@
 
 .field private thisFrameTake:J
 
+.field private renderOptimizer:Lcom/jarworld/rpg/sanguocollege/optimization/RenderOptimizer;
+
+.field private objectPool:Lcom/jarworld/rpg/sanguocollege/optimization/ObjectPool;
+
+.field private performanceMonitor:Lcom/jarworld/rpg/sanguocollege/optimization/PerformanceMonitor;
+
 
 # direct methods
 .method static constructor <clinit>()V
@@ -290,7 +296,43 @@
 
     sput-object v0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->s_pge_CurrentPage:Lcom/jarworld/rpg/sanguocollege/GameFrameBase;
 
-    .line 140
+    .line 141
+    invoke-direct {p0}, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->initializeOptimizationComponents()V
+
+    .line 142
+    return-void
+.end method
+
+.method private initializeOptimizationComponents()V
+    .locals 3
+
+    .prologue
+    .line 144
+    new-instance v0, Lcom/jarworld/rpg/sanguocollege/optimization/RenderOptimizer;
+
+    const/16 v1, 0x140
+
+    const/16 v2, 0xf0
+
+    invoke-direct {v0, v1, v2}, Lcom/jarworld/rpg/sanguocollege/optimization/RenderOptimizer;-><init>(II)V
+
+    iput-object v0, p0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->renderOptimizer:Lcom/jarworld/rpg/sanguocollege/optimization/RenderOptimizer;
+
+    .line 145
+    new-instance v0, Lcom/jarworld/rpg/sanguocollege/optimization/ObjectPool;
+
+    invoke-direct {v0}, Lcom/jarworld/rpg/sanguocollege/optimization/ObjectPool;-><init>()V
+
+    iput-object v0, p0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->objectPool:Lcom/jarworld/rpg/sanguocollege/optimization/ObjectPool;
+
+    .line 146
+    new-instance v0, Lcom/jarworld/rpg/sanguocollege/optimization/PerformanceMonitor;
+
+    invoke-direct {v0}, Lcom/jarworld/rpg/sanguocollege/optimization/PerformanceMonitor;-><init>()V
+
+    iput-object v0, p0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->performanceMonitor:Lcom/jarworld/rpg/sanguocollege/optimization/PerformanceMonitor;
+
+    .line 147
     return-void
 .end method
 
@@ -4200,62 +4242,62 @@
 .end method
 
 .method protected paint(Ljavax/microedition/lcdui/Graphics;)V
-    .locals 3
+    .locals 4
     .param p1, "g"    # Ljavax/microedition/lcdui/Graphics;
 
     .prologue
     const/4 v2, 0x0
 
     .line 918
-    sput-object p1, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->s_gph:Ljavax/microedition/lcdui/Graphics;
-
+    iget-object v0, p0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->renderOptimizer:Lcom/jarworld/rpg/sanguocollege/optimization/RenderOptimizer;
+    if-eqz v0, :cond_0
+    iget-object v0, p0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->renderOptimizer:Lcom/jarworld/rpg/sanguocollege/optimization/RenderOptimizer;
+    invoke-virtual {v0}, Lcom/jarworld/rpg/sanguocollege/optimization/RenderOptimizer;->beginFrame()Ljavax/microedition/lcdui/Graphics;
+    move-result-object v3
+    sput-object v3, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->s_gph:Ljavax/microedition/lcdui/Graphics;
+    :goto_0
     .line 920
     sget-object v0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->s_pge_CurrentPage:Lcom/jarworld/rpg/sanguocollege/GameFrameBase;
-
     invoke-virtual {v0}, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->show()V
 
     .line 922
     sget-object v0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->s_pge_CurrentPage:Lcom/jarworld/rpg/sanguocollege/GameFrameBase;
-
     iget-object v0, v0, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->teacher:Lcom/jarworld/rpg/sanguocollege/Teacher;
-
     iget-short v0, v0, Lcom/jarworld/rpg/sanguocollege/Teacher;->contIdx:S
-
     sget-object v1, Lcom/jarworld/rpg/sanguocollege/Teacher;->CONTIDX:[[S
-
     aget-object v1, v1, v2
-
     aget-short v1, v1, v2
-
-    if-eq v0, v1, :cond_0
-
+    if-eq v0, v1, :cond_1
     .line 923
     sget-object v0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->s_pge_CurrentPage:Lcom/jarworld/rpg/sanguocollege/GameFrameBase;
-
     sget-object v1, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->s_pge_CurrentPage:Lcom/jarworld/rpg/sanguocollege/GameFrameBase;
-
     iget-object v1, v1, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->teacher:Lcom/jarworld/rpg/sanguocollege/Teacher;
-
     iget-object v1, v1, Lcom/jarworld/rpg/sanguocollege/Teacher;->content:[[Ljava/util/Vector;
-
     sget-object v2, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->s_pge_CurrentPage:Lcom/jarworld/rpg/sanguocollege/GameFrameBase;
-
     iget-object v2, v2, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->teacher:Lcom/jarworld/rpg/sanguocollege/Teacher;
-
     iget-short v2, v2, Lcom/jarworld/rpg/sanguocollege/Teacher;->contIdx:S
-
     aget-object v1, v1, v2
-
     invoke-virtual {v0, v1}, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->drawTipWith2D([Ljava/util/Vector;)V
-
     .line 930
-    :cond_0
+    :cond_1
+    iget-object v0, p0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->renderOptimizer:Lcom/jarworld/rpg/sanguocollege/optimization/RenderOptimizer;
+    if-eqz v0, :cond_2
+    iget-object v0, p0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->renderOptimizer:Lcom/jarworld/rpg/sanguocollege/optimization/RenderOptimizer;
+    invoke-virtual {v0, p1}, Lcom/jarworld/rpg/sanguocollege/optimization/RenderOptimizer;->endFrame(Ljavax/microedition/lcdui/Graphics;)V
+    iget-object v0, p0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->renderOptimizer:Lcom/jarworld/rpg/sanguocollege/optimization/RenderOptimizer;
+    invoke-virtual {v0}, Lcom/jarworld/rpg/sanguocollege/optimization/RenderOptimizer;->getBackBufferImage()Ljavax/microedition/lcdui/Image;
+    move-result-object v0
+    const/4 v1, 0x0
+    const/4 v2, 0x0
+    invoke-virtual {p1, v0, v1, v2}, Ljavax/microedition/lcdui/Graphics;->drawImage(Ljavax/microedition/lcdui/Image;II)V
+    :cond_2
     const/4 v0, 0x0
-
     sput-object v0, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->s_gph:Ljavax/microedition/lcdui/Graphics;
-
     .line 931
     return-void
+    :cond_0
+    sput-object p1, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->s_gph:Ljavax/microedition/lcdui/Graphics;
+    goto :goto_0
 .end method
 
 .method protected pointerDragged(II)V
@@ -4388,41 +4430,34 @@
 .end method
 
 .method public run()V
-    .locals 11
+    .locals 13
 
     .prologue
-    const-wide/16 v9, 0x28
+    const-wide/16 v11, 0x28
 
     .line 934
     invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
-
     move-result-object v0
 
     .line 937
     .local v0, "currentThread":Ljava/lang/Thread;
     :goto_0
     :try_start_0
-    iget-object v5, p0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->animationThread:Ljava/lang/Thread;
-
-    if-eq v0, v5, :cond_0
-
+    iget-object v6, p0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->animationThread:Ljava/lang/Thread;
+    if-eq v0, v6, :cond_0
     .line 952
     :goto_1
     return-void
 
     .line 938
     :cond_0
-    sget-wide v5, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->totalTime:J
-
-    const-wide/16 v7, 0x1
-
-    add-long/2addr v5, v7
-
-    sput-wide v5, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->totalTime:J
+    sget-wide v6, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->totalTime:J
+    const-wide/16 v8, 0x1
+    add-long/2addr v6, v8
+    sput-wide v6, Lcom/jarworld/rpg/sanguocollege/GameFrameBase;->totalTime:J
 
     .line 939
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
     move-result-wide v1
 
     .line 940
@@ -4431,39 +4466,37 @@
 
     .line 941
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v5
-
-    sub-long v3, v5, v1
+    move-result-wide v6
+    sub-long v3, v6, v1
 
     .line 943
     .local v3, "timeTaken":J
-    cmp-long v5, v3, v9
+    iget-object v6, p0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->performanceMonitor:Lcom/jarworld/rpg/sanguocollege/optimization/PerformanceMonitor;
+    if-eqz v6, :cond_1
+    iget-object v6, p0, Lcom/jarworld/rpg/sanguocollege/GameViewBase;->performanceMonitor:Lcom/jarworld/rpg/sanguocollege/optimization/PerformanceMonitor;
+    invoke-virtual {v6, v3, v4}, Lcom/jarworld/rpg/sanguocollege/optimization/PerformanceMonitor;->update(J)V
 
-    if-gez v5, :cond_1
-
+    :cond_1
+    cmp-long v6, v3, v11
+    if-gez v6, :cond_2
     .line 944
-    sub-long v5, v9, v3
-
-    invoke-static {v5, v6}, Ljava/lang/Thread;->sleep(J)V
-
+    sub-long v6, v11, v3
+    invoke-static {v6, v7}, Ljava/lang/Thread;->sleep(J)V
     goto :goto_0
 
     .line 949
     .end local v1    # "startTime":J
     .end local v3    # "timeTaken":J
     :catch_0
-    move-exception v5
-
+    move-exception v6
     goto :goto_1
 
     .line 946
     .restart local v1    # "startTime":J
     .restart local v3    # "timeTaken":J
-    :cond_1
-    const-wide/16 v5, 0xa
-
-    invoke-static {v5, v6}, Ljava/lang/Thread;->sleep(J)V
+    :cond_2
+    const-wide/16 v6, 0xa
+    invoke-static {v6, v7}, Ljava/lang/Thread;->sleep(J)V
     :try_end_0
     .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
