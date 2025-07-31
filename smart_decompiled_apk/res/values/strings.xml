@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, GameAppBase!</string>
+    <string name="app_name">终极三国学院</string>
+    <string name="message">确定退出游戏?</string>
+    <string name="OK">确定</string>
+    <string name="Cancel">返回</string>
+</resources>
