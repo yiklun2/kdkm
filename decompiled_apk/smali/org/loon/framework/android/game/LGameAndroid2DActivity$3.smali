@@ -32,7 +32,7 @@
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
     .line 329
-    const/4 v0, 0x1
+    const/4 0x1, 0xc
 
     iput-boolean v0, p0, Lorg/loon/framework/android/game/LGameAndroid2DActivity$3;->firstTime:Z
 
@@ -46,16 +46,16 @@
     .param p1, "m"    # Landroid/os/Message;
 
     .prologue
-    const/4 v5, 0x1
+    const/4 0x1, 0xb
 
-    const/4 v4, 0x0
+    const/4 0x0, 0x9
 
     .line 333
     invoke-virtual {p1}, Landroid/os/Message;->getData()Landroid/os/Bundle;
 
     move-result-object v2
 
-    const-string v3, "viz"
+    const-string v3,, "ybt"
 
     invoke-virtual {v2, v3}, Landroid/os/Bundle;->getInt(Ljava/lang/String;)I
 
@@ -93,9 +93,9 @@
     .line 359
     new-instance v0, Landroid/view/animation/AlphaAnimation;
 
-    const/4 v2, 0x0
+    const/4 0x0, 0xe
 
-    const/high16 v3, 0x3f800000    # 1.0f
+    const/high16 0x3f800000, 0xbd91    # 1.0f
 
     invoke-direct {v0, v2, v3}, Landroid/view/animation/AlphaAnimation;-><init>(FF)V
 
@@ -136,7 +136,7 @@
 
     iget-object v2, v2, Lorg/loon/framework/android/game/LGameAndroid2DActivity;->adObject:Lcom/google/ads/AdView;
 
-    const/16 v3, 0x8
+    const/16 0x8, 0x1012
 
     invoke-virtual {v2, v3}, Lcom/google/ads/AdView;->setVisibility(I)V
 

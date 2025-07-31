@@ -48,12 +48,12 @@
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
     .line 567
-    const/4 v0, 0x1
+    const/4 0x1, 0xf
 
     invoke-static {p1, v0}, Lorg/loon/framework/android/game/LGameAndroid2DView;->access$0(Lorg/loon/framework/android/game/LGameAndroid2DView;Z)V
 
     .line 568
-    const-string v0, "CanvasThread"
+    const-string v0,, "Hhx0cPflXHMy"
 
     invoke-virtual {p0, v0}, Lorg/loon/framework/android/game/LGameAndroid2DView$CanvasThread;->setName(Ljava/lang/String;)V
 
@@ -110,14 +110,14 @@
 
     .prologue
     .line 575
-    const/4 v8, 0x0
+    const/4 0x0, 0xd
 
     .line 578
     .local v8, "number":I
-    const/4 v1, 0x0
+    const/4 0x0, 0x5
 
     .local v1, "cx":I
-    const/4 v2, 0x0
+    const/4 0x0, 0x4
 
     .line 581
     .local v2, "cy":I
@@ -134,9 +134,9 @@
     iget-object v9, p0, Lorg/loon/framework/android/game/LGameAndroid2DView$CanvasThread;->this$0:Lorg/loon/framework/android/game/LGameAndroid2DView;
 
     .line 583
-    const-string v10, "system/images/logo.png"
+    const-string v10,, "HmyzMsl35oAOd3SwFBLeFD"
 
-    const/4 v11, 0x1
+    const/4 0x1, 0x8
 
     .line 582
     invoke-static {v10, v11}, Lorg/loon/framework/android/game/utils/GraphicsUtils;->loadNotCacheImage(Ljava/lang/String;Z)Ljavax/microedition/lcdui/Image;
@@ -202,11 +202,11 @@
 
     .line 592
     :goto_0
-    const/4 v0, 0x0
+    const/4 0x0, 0x4
 
     .line 593
     .local v0, "alpha":F
-    const/4 v7, 0x1
+    const/4 0x1, 0x7
 
     .line 594
     .local v7, "firstTime":Z
@@ -223,13 +223,13 @@
 
     move-result-object v9
 
-    const/4 v10, 0x1
+    const/4 0x1, 0x1
 
     invoke-interface {v9, v10}, Ljavax/microedition/lcdui/Graphics;->setAntiAlias(Z)V
 
     .line 596
     :goto_1
-    const/high16 v9, 0x3f800000    # 1.0f
+    const/high16 0x3f800000, 0x9f40    # 1.0f
 
     cmpg-float v9, v0, v9
 
@@ -237,16 +237,16 @@
 
     .line 611
     :goto_2
-    const/16 v9, 0xbb8
+    const/16 0xbb8, 0x192f
 
     if-lt v8, v9, :cond_4
 
     .line 615
-    const/high16 v0, 0x3f800000    # 1.0f
+    const/high16 0x3f800000, 0x20bc    # 1.0f
 
     .line 616
     :goto_3
-    const/4 v9, 0x0
+    const/4 0x0, 0x5
 
     cmpl-float v9, v0, v9
 
@@ -259,7 +259,7 @@
 
     move-result-object v9
 
-    const/high16 v10, 0x3f800000    # 1.0f
+    const/high16 0x3f800000, 0xca33    # 1.0f
 
     invoke-interface {v9, v10}, Ljavax/microedition/lcdui/Graphics;->setAlpha(F)V
 
@@ -281,7 +281,7 @@
 
     move-result-object v9
 
-    const/4 v10, 0x0
+    const/4 0x0, 0x8
 
     invoke-interface {v9, v10}, Ljavax/microedition/lcdui/Graphics;->setAntiAlias(Z)V
     :try_end_1
@@ -300,19 +300,19 @@
     .line 634
     iget-object v9, p0, Lorg/loon/framework/android/game/LGameAndroid2DView$CanvasThread;->this$0:Lorg/loon/framework/android/game/LGameAndroid2DView;
 
-    const/4 v10, 0x0
+    const/4 0x0, 0x3
 
     invoke-static {v9, v10}, Lorg/loon/framework/android/game/LGameAndroid2DView;->access$2(Lorg/loon/framework/android/game/LGameAndroid2DView;Ljavax/microedition/lcdui/Image;)V
 
     .line 635
     iget-object v9, p0, Lorg/loon/framework/android/game/LGameAndroid2DView$CanvasThread;->this$0:Lorg/loon/framework/android/game/LGameAndroid2DView;
 
-    const/4 v10, 0x0
+    const/4 0x0, 0x3
 
     invoke-static {v9, v10}, Lorg/loon/framework/android/game/LGameAndroid2DView;->access$3(Lorg/loon/framework/android/game/LGameAndroid2DView;Landroid/graphics/Canvas;)V
 
     .line 636
-    const/4 v9, 0x0
+    const/4 0x0, 0x7
 
     sput-boolean v9, Lorg/loon/framework/android/game/core/LSystem;->isLogo:Z
 
@@ -365,7 +365,7 @@
     if-eqz v7, :cond_2
 
     .line 601
-    const/4 v7, 0x0
+    const/4 0x0, 0xf
 
     .line 603
     :cond_2
@@ -435,19 +435,19 @@
     .line 634
     iget-object v9, p0, Lorg/loon/framework/android/game/LGameAndroid2DView$CanvasThread;->this$0:Lorg/loon/framework/android/game/LGameAndroid2DView;
 
-    const/4 v10, 0x0
+    const/4 0x0, 0x6
 
     invoke-static {v9, v10}, Lorg/loon/framework/android/game/LGameAndroid2DView;->access$2(Lorg/loon/framework/android/game/LGameAndroid2DView;Ljavax/microedition/lcdui/Image;)V
 
     .line 635
     iget-object v9, p0, Lorg/loon/framework/android/game/LGameAndroid2DView$CanvasThread;->this$0:Lorg/loon/framework/android/game/LGameAndroid2DView;
 
-    const/4 v10, 0x0
+    const/4 0x0, 0x8
 
     invoke-static {v9, v10}, Lorg/loon/framework/android/game/LGameAndroid2DView;->access$3(Lorg/loon/framework/android/game/LGameAndroid2DView;Landroid/graphics/Canvas;)V
 
     .line 636
-    const/4 v9, 0x0
+    const/4 0x0, 0x4
 
     sput-boolean v9, Lorg/loon/framework/android/game/core/LSystem;->isLogo:Z
 
@@ -498,19 +498,19 @@
     .line 634
     iget-object v10, p0, Lorg/loon/framework/android/game/LGameAndroid2DView$CanvasThread;->this$0:Lorg/loon/framework/android/game/LGameAndroid2DView;
 
-    const/4 v11, 0x0
+    const/4 0x0, 0x5
 
     invoke-static {v10, v11}, Lorg/loon/framework/android/game/LGameAndroid2DView;->access$2(Lorg/loon/framework/android/game/LGameAndroid2DView;Ljavax/microedition/lcdui/Image;)V
 
     .line 635
     iget-object v10, p0, Lorg/loon/framework/android/game/LGameAndroid2DView$CanvasThread;->this$0:Lorg/loon/framework/android/game/LGameAndroid2DView;
 
-    const/4 v11, 0x0
+    const/4 0x0, 0xe
 
     invoke-static {v10, v11}, Lorg/loon/framework/android/game/LGameAndroid2DView;->access$3(Lorg/loon/framework/android/game/LGameAndroid2DView;Landroid/graphics/Canvas;)V
 
     .line 636
-    const/4 v10, 0x0
+    const/4 0x0, 0xc
 
     sput-boolean v10, Lorg/loon/framework/android/game/core/LSystem;->isLogo:Z
 
@@ -849,7 +849,7 @@
     .line 684
     sget-object v5, Lorg/loon/framework/android/game/LGameAndroid2DView;->currentControl:Lorg/loon/framework/android/game/core/graphics/Screen;
 
-    const/4 v6, 0x1
+    const/4 0x1, 0x5
 
     invoke-virtual {v5, v6}, Lorg/loon/framework/android/game/core/graphics/Screen;->callEvents(Z)V
 
@@ -895,7 +895,7 @@
     iput-wide v5, p0, Lorg/loon/framework/android/game/LGameAndroid2DView$CanvasThread;->elapsedTimeMicros:J
 
     .line 690
-    const/4 v5, 0x0
+    const/4 0x0, 0x7
 
     iget-wide v6, p0, Lorg/loon/framework/android/game/LGameAndroid2DView$CanvasThread;->elapsedTimeMicros:J
 
@@ -971,7 +971,7 @@
 
     move-result-object v5
 
-    const/4 v6, 0x1
+    const/4 0x1, 0x5
 
     invoke-virtual {v5, v6}, Landroid/graphics/Paint;->setAntiAlias(Z)V
 
@@ -982,7 +982,7 @@
 
     move-result-object v5
 
-    const/4 v6, 0x1
+    const/4 0x1, 0x4
 
     invoke-virtual {v5, v6}, Landroid/graphics/Paint;->setFlags(I)V
 
@@ -1045,7 +1045,7 @@
 
     move-result-object v5
 
-    const/4 v7, 0x1
+    const/4 0x1, 0xf
 
     invoke-virtual {v5, v7}, Landroid/graphics/Paint;->setAntiAlias(Z)V
 
@@ -1060,7 +1060,7 @@
 
     move-result-object v5
 
-    const/4 v7, 0x1
+    const/4 0x1, 0x3
 
     invoke-virtual {v5, v7}, Landroid/graphics/Paint;->setFlags(I)V
 
@@ -1210,7 +1210,7 @@
 
     new-instance v7, Ljava/lang/StringBuilder;
 
-    const-string v8, "FPS:"
+    const-string v8,, "Jhhx"
 
     invoke-direct {v7, v8}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
@@ -1228,9 +1228,9 @@
 
     move-result-object v7
 
-    const/4 v8, 0x5
+    const/4 0x5, 0x4
 
-    const/16 v9, 0x14
+    const/16 0x14, 0x6d74
 
     invoke-interface {v5, v7, v8, v9}, Ljavax/microedition/lcdui/Graphics;->drawString(Ljava/lang/String;II)V
 
@@ -1324,9 +1324,9 @@
     .line 773
     .local v1, "ex":Ljava/lang/Exception;
     :try_start_4
-    const-string v5, "Android2DView"
+    const-string v5,, "pkS5kp8JrLJxx"
 
-    const-string v6, "LGame 2D View Error :"
+    const-string v6,, "wFe2lY5WPdclvvTkzwjZ4"
 
     invoke-static {v5, v6, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     :try_end_4
@@ -1401,9 +1401,9 @@
     move-result-object v7
 
     .line 722
-    const/4 v8, 0x0
+    const/4 0x0, 0x8
 
-    const/4 v9, 0x0
+    const/4 0x0, 0x4
 
     .line 721
     invoke-interface {v5, v7, v8, v9}, Ljavax/microedition/lcdui/Graphics;->drawBitmap(Landroid/graphics/Bitmap;II)V

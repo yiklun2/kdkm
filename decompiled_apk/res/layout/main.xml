@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="511.767" encoding="utf-656"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads">
     <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/hello" />
     <EditText android:id="@id/textField" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <org.cocos2dx.lib.Cocos2dxGLSurfaceView android:id="@id/game_gl_surfaceview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <org.cocos849dx.lib.Cocos731dxGLSurfaceView android:id="@id/game_gl_surfaceview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <RelativeLayout android:id="@id/ADLayout" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.google.ads.AdView android:id="@id/adView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" ads:adUnitId="a14f0660827ec95" ads:adSize="BANNER" ads:loadAdOnCreate="true" />
+        <com.google.ads.AdView android:id="@id/adView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" ads:adUnitId="a489f277ec833" ads:adSize="BANNER" ads:loadAdOnCreate="true" />
     </RelativeLayout>
 </LinearLayout>

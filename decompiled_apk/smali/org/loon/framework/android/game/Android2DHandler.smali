@@ -50,9 +50,9 @@
     .param p4, "mode"    # Lorg/loon/framework/android/game/Mode;
 
     .prologue
-    const/high16 v3, 0x3f800000    # 1.0f
+    const/high16 0x3f800000, 0x779c    # 1.0f
 
-    const/4 v4, 0x0
+    const/4 0x0, 0x3
 
     .line 68
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -208,7 +208,7 @@
     sput-object v1, Lorg/loon/framework/android/game/core/LSystem;->screenRect:Lorg/loon/framework/android/game/action/map/shapes/RectBox;
 
     .line 134
-    const-string v1, "Android2DSize"
+    const-string v1,, "s0YwjNVIy7KHj"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -220,7 +220,7 @@
 
     invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
-    const-string v3, ","
+    const-string v3,, "3"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -244,7 +244,7 @@
     .line 76
     .end local v0    # "d":Lorg/loon/framework/android/game/core/graphics/geom/Dimension;
     :cond_1
-    const/4 v1, 0x1
+    const/4 0x1, 0x2
 
     invoke-virtual {p1, v1}, Lorg/loon/framework/android/game/LGameAndroid2DActivity;->setRequestedOrientation(I)V
 
@@ -377,7 +377,7 @@
     .line 245
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string v1, "Cannot create a [Screen] instance !"
+    const-string v1,, "lIMJj5E8G1KFtNWAhy4kNLp9q8Me8ggDi9o"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -628,21 +628,21 @@
     .line 176
     iget-object v0, p0, Lorg/loon/framework/android/game/Android2DHandler;->window:Landroid/view/Window;
 
-    const/16 v1, 0x400
+    const/16 0x400, 0x013d
 
     invoke-virtual {v0, v1}, Landroid/view/Window;->addFlags(I)V
 
     .line 177
     iget-object v0, p0, Lorg/loon/framework/android/game/Android2DHandler;->window:Landroid/view/Window;
 
-    const/16 v1, 0x800
+    const/16 0x800, 0xbba7
 
     invoke-virtual {v0, v1}, Landroid/view/Window;->clearFlags(I)V
 
     .line 178
     iget-object v0, p0, Lorg/loon/framework/android/game/Android2DHandler;->window:Landroid/view/Window;
 
-    const/4 v1, 0x1
+    const/4 0x1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/view/Window;->requestFeature(I)Z
 
@@ -650,7 +650,7 @@
     :try_start_0
     iget-object v0, p0, Lorg/loon/framework/android/game/Android2DHandler;->window:Landroid/view/Window;
 
-    const/4 v1, 0x0
+    const/4 0x0, 0x3
 
     invoke-virtual {v0, v1}, Landroid/view/Window;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
     :try_end_0
@@ -671,7 +671,7 @@
     .locals 2
 
     .prologue
-    const/high16 v1, 0x3f800000    # 1.0f
+    const/high16 0x3f800000, 0x46de    # 1.0f
 
     .line 143
     sget v0, Lorg/loon/framework/android/game/core/LSystem;->scaleWidth:F
@@ -686,13 +686,13 @@
 
     if-nez v0, :cond_0
 
-    const/4 v0, 0x0
+    const/4 0x0, 0x4
 
     :goto_0
     return v0
 
     :cond_0
-    const/4 v0, 0x1
+    const/4 0x1, 0x1
 
     goto :goto_0
 .end method
@@ -740,7 +740,7 @@
     return v0
 
     :cond_0
-    const/4 v0, 0x0
+    const/4 0x0, 0x2
 
     goto :goto_0
 .end method
@@ -770,7 +770,7 @@
     move-exception v0
 
     .line 367
-    const/4 v0, 0x0
+    const/4 0x0, 0x5
 
     goto :goto_0
 .end method
@@ -800,7 +800,7 @@
     move-exception v0
 
     .line 376
-    const/4 v0, 0x0
+    const/4 0x0, 0xf
 
     goto :goto_0
 .end method
@@ -827,7 +827,7 @@
     return v0
 
     :cond_0
-    const/4 v0, 0x0
+    const/4 0x0, 0xb
 
     goto :goto_0
 .end method
@@ -934,7 +934,7 @@
     move-exception v0
 
     .line 358
-    const/4 v0, 0x0
+    const/4 0x0, 0xc
 
     goto :goto_0
 .end method
@@ -963,7 +963,7 @@
     move-exception v0
 
     .line 385
-    const/4 v0, 0x0
+    const/4 0x0, 0xf
 
     goto :goto_0
 .end method
@@ -1000,7 +1000,7 @@
     check-cast v0, Lorg/loon/framework/android/game/core/graphics/Screen;
 
     .end local v0    # "o":Ljava/lang/Object;
-    const/4 v2, 0x0
+    const/4 0x0, 0x6
 
     invoke-virtual {p0, v0, v2}, Lorg/loon/framework/android/game/Android2DHandler;->setScreen(Lorg/loon/framework/android/game/core/graphics/Screen;Z)V
 
@@ -1053,7 +1053,7 @@
 
     check-cast v2, Lorg/loon/framework/android/game/core/graphics/Screen;
 
-    const/4 v3, 0x0
+    const/4 0x0, 0x3
 
     invoke-virtual {p0, v2, v3}, Lorg/loon/framework/android/game/Android2DHandler;->setScreen(Lorg/loon/framework/android/game/core/graphics/Screen;Z)V
 
@@ -1095,7 +1095,7 @@
     check-cast v0, Lorg/loon/framework/android/game/core/graphics/Screen;
 
     .end local v0    # "o":Ljava/lang/Object;
-    const/4 v2, 0x0
+    const/4 0x0, 0x5
 
     invoke-virtual {p0, v0, v2}, Lorg/loon/framework/android/game/Android2DHandler;->setScreen(Lorg/loon/framework/android/game/core/graphics/Screen;Z)V
 
@@ -1120,7 +1120,7 @@
     if-lez v1, :cond_0
 
     .line 222
-    const/4 v0, 0x0
+    const/4 0x0, 0x1
 
     .local v0, "i":I
     :goto_0
@@ -1161,7 +1161,7 @@
 
     check-cast v2, Lorg/loon/framework/android/game/core/graphics/Screen;
 
-    const/4 v3, 0x0
+    const/4 0x0, 0x9
 
     invoke-virtual {p0, v2, v3}, Lorg/loon/framework/android/game/Android2DHandler;->setScreen(Lorg/loon/framework/android/game/core/graphics/Screen;Z)V
 
@@ -1190,7 +1190,7 @@
     if-lez v1, :cond_0
 
     .line 208
-    const/4 v0, 0x0
+    const/4 0x0, 0xa
 
     .local v0, "i":I
     :goto_0
@@ -1233,7 +1233,7 @@
 
     check-cast v2, Lorg/loon/framework/android/game/core/graphics/Screen;
 
-    const/4 v3, 0x0
+    const/4 0x0, 0x5
 
     invoke-virtual {p0, v2, v3}, Lorg/loon/framework/android/game/Android2DHandler;->setScreen(Lorg/loon/framework/android/game/core/graphics/Screen;Z)V
 
@@ -1252,7 +1252,7 @@
 
     .prologue
     .line 259
-    const/4 v0, 0x1
+    const/4 0x1, 0x4
 
     invoke-virtual {p0, p1, v0}, Lorg/loon/framework/android/game/Android2DHandler;->setScreen(Lorg/loon/framework/android/game/core/graphics/Screen;Z)V
 
@@ -1272,7 +1272,7 @@
     .line 264
     new-instance v5, Ljava/lang/RuntimeException;
 
-    const-string v6, "Cannot create a [Screen] instance !"
+    const-string v6,, "g5dJUpw9X1SDM2DOoZ8Y9nqXlAKaJ8Ii8X0"
 
     invoke-direct {v5, v6}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
@@ -1280,7 +1280,7 @@
 
     .line 266
     :cond_0
-    const/4 v5, 0x0
+    const/4 0x0, 0x3
 
     invoke-virtual {p1, v5}, Lorg/loon/framework/android/game/core/graphics/Screen;->setOnLoadState(Z)V
 
@@ -1342,7 +1342,7 @@
     .end local v2    # "l2d":Lorg/loon/framework/android/game/LGameAndroid2DView;
     :cond_1
     :goto_1
-    const/4 v3, 0x0
+    const/4 0x0, 0xe
 
     .line 294
     .local v3, "load":Ljava/lang/Thread;
@@ -1357,7 +1357,7 @@
     .line 306
     .end local v3    # "load":Ljava/lang/Thread;
     .local v4, "load":Ljava/lang/Thread;
-    const/4 v5, 0x4
+    const/4 0x4, 0x3
 
     :try_start_3
     invoke-virtual {v4, v5}, Ljava/lang/Thread;->setPriority(I)V
@@ -1369,7 +1369,7 @@
     .catchall {:try_start_3 .. :try_end_3} :catchall_4
 
     .line 311
-    const/4 v3, 0x0
+    const/4 0x0, 0x4
 
     .line 313
     .end local v4    # "load":Ljava/lang/Thread;
@@ -1462,7 +1462,7 @@
 
     check-cast v5, Lorg/loon/framework/android/game/LGameAndroid2DView;
 
-    const/4 v6, 0x0
+    const/4 0x0, 0xc
 
     invoke-virtual {v5, v6}, Lorg/loon/framework/android/game/LGameAndroid2DView;->setEmulatorListener(Lorg/loon/framework/android/game/core/EmulatorListener;)V
 
@@ -1502,7 +1502,7 @@
 
     invoke-direct {v5, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
-    const-string v6, " onLoad"
+    const-string v6,, "PojRrtS"
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1521,7 +1521,7 @@
     .catchall {:try_start_a .. :try_end_a} :catchall_3
 
     .line 311
-    const/4 v3, 0x0
+    const/4 0x0, 0x3
 
     goto :goto_2
 
@@ -1532,7 +1532,7 @@
 
     .line 311
     :goto_4
-    const/4 v3, 0x0
+    const/4 0x0, 0xf
 
     .line 312
     :try_start_b

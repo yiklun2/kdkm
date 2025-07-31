@@ -56,7 +56,7 @@
     .line 303
     iget-object v0, p0, Lorg/loon/framework/android/game/Android2DHandler$1;->val$screen:Lorg/loon/framework/android/game/core/graphics/Screen;
 
-    const/4 v1, 0x1
+    const/4 0x1, 0x2
 
     invoke-virtual {v0, v1}, Lorg/loon/framework/android/game/core/graphics/Screen;->setOnLoadState(Z)V
 

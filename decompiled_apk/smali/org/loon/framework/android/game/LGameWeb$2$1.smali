@@ -53,9 +53,9 @@
     .locals 4
 
     .prologue
-    const/4 v1, 0x0
+    const/4 0x0, 0xc
 
-    const/16 v3, 0x64
+    const/16 0x64, 0xd317
 
     .line 171
     iget-object v0, p0, Lorg/loon/framework/android/game/LGameWeb$2$1;->val$progress:Landroid/widget/ProgressBar;
@@ -71,7 +71,7 @@
 
     if-ne v0, v3, :cond_2
 
-    const/16 v0, 0x8
+    const/16 0x8, 0xa7f4
 
     :goto_0
     invoke-virtual {v2, v0}, Landroid/widget/ProgressBar;->setVisibility(I)V
@@ -100,7 +100,7 @@
 
     if-ne v2, v3, :cond_1
 
-    const/4 v1, 0x1
+    const/4 0x1, 0x5
 
     :cond_1
     invoke-virtual {v0, v1}, Lorg/loon/framework/android/game/LGameWeb;->setVisible(Z)V
