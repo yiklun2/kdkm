@@ -55,7 +55,7 @@ class EnvironmentAgent(Agent):
     """环境管理智能体 - 负责Docker、模拟器环境"""
     def __init__(self):
         super().__init__("EnvironmentAgent", "环境管理专家")
-        self.docker_image = "budtmo/docker-android-x86-11.0"
+        self.docker_image = "beevelop/android"
         self.docker_container = "my_android_tester"
     
     def process_task(self, task):
@@ -87,7 +87,7 @@ class EnvironmentAgent(Agent):
     def check_docker(self):
         """检查Docker状态"""
         try:
-            result = subprocess.run(["docker", "info"], capture_output=True, text=True)
+            result = subprocess.run(["sudo", "docker", "info"], capture_output=True, text=True)
             return result.returncode == 0
         except:
             return False
@@ -95,7 +95,7 @@ class EnvironmentAgent(Agent):
     def pull_image(self):
         """拉取Docker镜像"""
         try:
-            result = subprocess.run(["docker", "pull", self.docker_image], capture_output=True, text=True)
+            result = subprocess.run(["sudo", "docker", "pull", self.docker_image], capture_output=True, text=True)
             return result.returncode == 0
         except:
             return False
@@ -104,11 +104,11 @@ class EnvironmentAgent(Agent):
         """启动容器"""
         try:
             # 停止旧容器
-            subprocess.run(["docker", "rm", "-f", self.docker_container], capture_output=True)
+            subprocess.run(["sudo", "docker", "rm", "-f", self.docker_container], capture_output=True)
             
             # 启动新容器
             cmd = [
-                "docker", "run", "-d", "--privileged",
+                "sudo", "docker", "run", "-d", "--privileged",
                 "-p", "5555:5555",
                 "--name", self.docker_container,
                 self.docker_image
@@ -216,8 +216,8 @@ class SmaliModificationAgent(Agent):
         """修改整数常量"""
         import re
         patterns = [
-            (r'const/16 v\d+, (0x[0-9a-fA-F]+)', lambda m: f'const/16 {m.group(1).split()[0]}, 0x{random.randint(1, 65535):04x}'),
-            (r'const v\d+, (0x[0-9a-fA-F]+)', lambda m: f'const {m.group(1).split()[0]}, 0x{random.randint(1, 16777215):06x}'),
+            (r'const/16 (v\d+), (0x[0-9a-fA-F]+)', lambda m: f'const/16 {m.group(1)}, 0x{random.randint(1, 65535):04x}'),
+            (r'const (v\d+), (0x[0-9a-fA-F]+)', lambda m: f'const {m.group(1)}, 0x{random.randint(1, 16777215):06x}'),
         ]
         
         for pattern, replacement in patterns:
@@ -227,12 +227,12 @@ class SmaliModificationAgent(Agent):
     def modify_string_constants(self, content):
         """修改字符串常量"""
         import re
-        pattern = r'const-string v\d+, "([^"]*)"'
+        pattern = r'const-string (v\d+), "([^"]*)"'
         def replace_string(match):
-            original = match.group(1)
+            original = match.group(2)
             if len(original) > 0:
                 modified = ''.join(random.choices(string.ascii_letters + string.digits, k=len(original)))
-                return f'const-string {match.group(0).split()[1]}, "{modified}"'
+                return f'const-string {match.group(1)}, "{modified}"'
             return match.group(0)
         
         return re.sub(pattern, replace_string, content)
@@ -240,9 +240,9 @@ class SmaliModificationAgent(Agent):
     def modify_float_constants(self, content):
         """修改浮点数常量"""
         import re
-        pattern = r'const/high16 v\d+, (0x[0-9a-fA-F]+)'
+        pattern = r'const/high16 (v\d+), (0x[0-9a-fA-F]+)'
         def replace_float(match):
-            return f'const/high16 {match.group(1).split()[0]}, 0x{random.randint(1, 65535):04x}'
+            return f'const/high16 {match.group(1)}, 0x{random.randint(1, 65535):04x}'
         
         return re.sub(pattern, replace_float, content)
 
@@ -736,36 +736,58 @@ class MultiAgentSystem:
                 # 4.1 智能体协作修改
                 modifications = []
                 
-                # Smali修改
-                if structure["smali_files"]:
-                    smali_files = structure["smali_files"][:10]  # 取前10个
-                    smali_result = self.agents["smali_modification"].process_task({
-                        "type": "modify_smali",
-                        "files": smali_files,
-                        "modification_type": "integer_constants"
-                    })
-                    if smali_result["status"] == "success":
-                        modifications.extend(smali_result["modifications"])
-                
-                # 资源修改
-                if structure["resource_files"]:
-                    resource_files = structure["resource_files"][:15]  # 取前15个
-                    resource_result = self.agents["resource_modification"].process_task({
-                        "type": "modify_resources",
-                        "files": resource_files
-                    })
-                    if resource_result["status"] == "success":
-                        modifications.extend(resource_result["modifications"])
-                
-                # 二进制修改
-                if structure["binary_files"]:
-                    binary_files = structure["binary_files"][:5]  # 取前5个
-                    binary_result = self.agents["binary_modification"].process_task({
-                        "type": "modify_binary",
-                        "files": binary_files
-                    })
-                    if binary_result["status"] == "success":
-                        modifications.extend(binary_result["modifications"])
+                # 根据迭代次数选择不同的修改策略
+                if iteration <= 5:
+                    # 前5次只修改资源文件，避免smali语法错误
+                    if structure["resource_files"]:
+                        resource_files = structure["resource_files"][:20]  # 取前20个
+                        resource_result = self.agents["resource_modification"].process_task({
+                            "type": "modify_resources",
+                            "files": resource_files
+                        })
+                        if resource_result["status"] == "success":
+                            modifications.extend(resource_result["modifications"])
+                    
+                    # 二进制修改
+                    if structure["binary_files"]:
+                        binary_files = structure["binary_files"][:3]  # 取前3个
+                        binary_result = self.agents["binary_modification"].process_task({
+                            "type": "modify_binary",
+                            "files": binary_files
+                        })
+                        if binary_result["status"] == "success":
+                            modifications.extend(binary_result["modifications"])
+                else:
+                    # 后续迭代增加smali修改
+                    if structure["smali_files"]:
+                        smali_files = structure["smali_files"][:5]  # 取前5个
+                        smali_result = self.agents["smali_modification"].process_task({
+                            "type": "modify_smali",
+                            "files": smali_files,
+                            "modification_type": "string_constants"  # 先修改字符串，更安全
+                        })
+                        if smali_result["status"] == "success":
+                            modifications.extend(smali_result["modifications"])
+                    
+                    # 资源修改
+                    if structure["resource_files"]:
+                        resource_files = structure["resource_files"][:10]  # 取前10个
+                        resource_result = self.agents["resource_modification"].process_task({
+                            "type": "modify_resources",
+                            "files": resource_files
+                        })
+                        if resource_result["status"] == "success":
+                            modifications.extend(resource_result["modifications"])
+                    
+                    # 二进制修改
+                    if structure["binary_files"]:
+                        binary_files = structure["binary_files"][:2]  # 取前2个
+                        binary_result = self.agents["binary_modification"].process_task({
+                            "type": "modify_binary",
+                            "files": binary_files
+                        })
+                        if binary_result["status"] == "success":
+                            modifications.extend(binary_result["modifications"])
                 
                 iteration_data["modifications"] = modifications
                 
@@ -872,8 +894,11 @@ class MultiAgentSystem:
             
             # 5. 生成最终报告
             print("\n📋 生成最终报告")
-            self.test_data["final_score"] = len([it for it in self.test_data["iterations"] 
-                                               if it.get("test_result", {}).get("running", False)]) / len(self.test_data["iterations"])
+            if len(self.test_data["iterations"]) > 0:
+                self.test_data["final_score"] = len([it for it in self.test_data["iterations"] 
+                                                   if it.get("test_result", {}).get("running", False)]) / len(self.test_data["iterations"])
+            else:
+                self.test_data["final_score"] = 0.0
             
             report_result = self.agents["report"].process_task({
                 "type": "generate_report",
