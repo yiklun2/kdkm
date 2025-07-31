@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="id_recordlayout" />
+    <item type="id" name="textField" />
+    <item type="id" name="game_gl_surfaceview" />
+    <item type="id" name="ADLayout" />
+    <item type="id" name="adView" />
+</resources>
