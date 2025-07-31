@@ -31,6 +31,8 @@ class AutoModifyAndTestSystem:
         self.screenshots_dir = "screenshots"
         self.logs_dir = "logs"
         self.decompiled_dir = "decompiled_apk"
+        self.docker_image = "budtmo/docker-android-x86-11.0"
+        self.docker_container = "my_android_tester"
         
         # 创建必要的目录
         for dir_path in [self.test_results_dir, self.screenshots_dir, self.logs_dir, self.decompiled_dir]:
@@ -48,22 +50,56 @@ class AutoModifyAndTestSystem:
             "successful_modifications": []
         }
     
-    def start_android_emulator(self):
-        """启动Docker安卓模拟器"""
-        print("🚀 启动Docker安卓模拟器...")
+    def ensure_docker_running(self):
+        """确保docker服务和安卓模拟器容器已启动"""
+        print("🐳 检查Docker服务...")
+        # 检查docker命令
+        if shutil.which("docker") is None:
+            print("❌ 未检测到docker，请先手动安装docker！")
+            sys.exit(1)
+        # 检查docker守护进程
         try:
-            subprocess.run("docker-compose down", shell=True, check=False)
-            result = subprocess.run("docker-compose up -d", shell=True, capture_output=True, text=True)
+            result = subprocess.run(["docker", "info"], capture_output=True, text=True)
             if result.returncode != 0:
-                print(f"❌ 启动模拟器失败: {result.stderr}")
-                return False
-            
-            print("✅ 模拟器启动成功")
-            time.sleep(30)  # 等待启动
-            return True
+                print("⚠️  Docker守护进程未运行，尝试后台启动...")
+                subprocess.Popen(["dockerd"])
+                time.sleep(5)
         except Exception as e:
-            print(f"❌ 启动模拟器异常: {e}")
-            return False
+            print(f"❌ 启动docker守护进程失败: {e}")
+            sys.exit(1)
+        # 检查镜像
+        print(f"🐳 检查镜像 {self.docker_image} ...")
+        result = subprocess.run(["docker", "images", "-q", self.docker_image], capture_output=True, text=True)
+        if not result.stdout.strip():
+            print(f"⬇️  拉取镜像 {self.docker_image} ...")
+            pull_result = subprocess.run(["docker", "pull", self.docker_image])
+            if pull_result.returncode != 0:
+                print("❌ 拉取镜像失败！")
+                sys.exit(1)
+        # 检查容器
+        print(f"🐳 检查容器 {self.docker_container} ...")
+        result = subprocess.run(["docker", "ps", "-a", "--format", "{{.Names}}"], capture_output=True, text=True)
+        containers = result.stdout.splitlines()
+        if self.docker_container in containers:
+            # 如果已存在，先停止并删除
+            subprocess.run(["docker", "rm", "-f", self.docker_container])
+        # 启动新容器
+        print(f"🚀 启动安卓模拟器容器 {self.docker_container} ...")
+        run_cmd = [
+            "docker", "run", "-d", "--privileged",
+            "-p", "5555:5555",
+            "--name", self.docker_container,
+            self.docker_image
+        ]
+        subprocess.run(run_cmd, check=True)
+        print("✅ 安卓模拟器容器已启动")
+        print("⏳ 等待模拟器完全启动...")
+        time.sleep(30)
+
+    def start_android_emulator(self):
+        """集成docker自动拉取和启动"""
+        self.ensure_docker_running()
+        return True
     
     def connect_adb(self):
         """连接ADB到模拟器"""
