@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  android-emulator:
+    image: budtmo/docker-android-x86-11.0
+    container_name: android_test_environment
+    privileged: true
+    ports:
+      - "5555:5555"  # ADB端口
+      - "6080:6080"  # VNC端口（可选，用于调试）
+    environment:
+      - DISPLAY=:99
+      - DEVICE=Nexus 5
+      - CONNECT_TO_GRID=false
+      - APPIUM=true
+      - SELENIUM=true
+    volumes:
+      - ./apk_files:/root/apk_files
+      - ./test_results:/root/test_results
+    shm_size: 2gb
+    restart: unless-stopped
